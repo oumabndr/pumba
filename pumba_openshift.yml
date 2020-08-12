@@ -23,7 +23,7 @@ spec:
               'kill',
               '--signal',
               'SIGKILL',
-              're2:.*elastalert.*',
+              're2: elastalert.*',
             ]
           securityContext:
             runAsUser: 1000100000
