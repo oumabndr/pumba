@@ -1,0 +1,36 @@
+apiVersion: extensions/v1beta1
+kind: DaemonSet
+metadata:
+  name: pumba
+spec:
+  template:
+    metadata:
+      labels:
+        app: pumba
+      name: pumba
+    spec:
+      containers:
+        - image: gaiaadm/pumba:master
+          imagePullPolicy: Always
+          name: pumba
+          command: ['pumba']
+          args:
+            [
+              '--random',
+              '--debug',
+              '--interval',
+              '30s',
+              'kill',
+              '--signal',
+              'SIGKILL',
+              're2:.*elastalert.*',
+            ]
+          securityContext:
+            runAsUser: 1000100000
+          volumeMounts:
+            - name: dockersocket
+              mountPath: /var/run/docker.sock
+      volumes:
+        - hostPath:
+            path: /var/run/docker.sock
+          name: dockersocket
