@@ -10,7 +10,7 @@ spec:
       name: pumba
     spec:
       containers:
-        - image: orangesys/alpine-pumba:0.2.4
+        - image: gaiaadm/pumba:master
           imagePullPolicy: Always
           name: pumba
           command: ['pumba']
