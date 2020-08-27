@@ -19,7 +19,7 @@ spec:
               '--random',
               '--debug',
               '--interval',
-              '600s',
+              '60s',
               'kill',
               '--signal',
               'SIGKILL',
